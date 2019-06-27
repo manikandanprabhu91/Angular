@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient ,HttpHeaders} from '@angular/common/http';
-import * as serverUrl from '../config/config'
+import * as serverUrl from '../config'
 
 
 @Injectable()
