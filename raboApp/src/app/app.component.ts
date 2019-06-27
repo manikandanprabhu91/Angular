@@ -10,21 +10,19 @@ export class AppComponent implements OnInit {
   title = 'raboApp';
   tableShow:boolean=false;
   uploadFile:any
+  responseData:any
   constructor(private FileUploadServiceService:FileUploadServiceService){}
   ngOnInit(){
 
   }
-  fileUpload(file:File){
-    //const formdata: FormData = new FormData();
-    //formdata.append('file', file);
-    this.uploadFile= file[0];
-    console.log(file)
-
-   
+  fileUpload(file:any){
+    const target: DataTransfer = <DataTransfer>(file.target);
+    this.uploadFile = target.files[0];
+    console.log(file);
   }
-
   fileSubmit(){
-   this.FileUploadServiceService.getTableDetails(this.uploadFile).subscribe(data=>{
+   this.FileUploadServiceService.uploadFile(this.uploadFile).subscribe(data=>{
+     this.responseData=data;
     this.tableShow=true
     })
     
